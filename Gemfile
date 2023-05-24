@@ -71,4 +71,6 @@ group :test do
   gem "webdrivers"
 end
 
-gem "tailwindcss-rails", "~> 2.0"
+gem "devise", "~> 4.9"
+
+gem "mysql2", "~> 0.5.5"
