@@ -1,8 +1,8 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>Dashboard#index</h1>
 
 <% if current_user %>
     <p>Hello <%= current_user.email %> </p>
+    <p>Terakhir login pada <%= current_user.last_sign_in_at.strftime('%d %B %Y %H:%M:%S') %> </p>
     <p>You are a [<%= current_user.role %>]</p>
     <% if current_user.admin? %>
        <p>There are <%= User.count %> users in the system</p>

@@ -1,0 +1,10 @@
+.login-page {
+    height: 100%;
+    font-family: "Raleway", sans-serif;
+}
+.login-page > .bgimg {
+    background-image: url('/assets/joseph-barrientos-eUMEWE-7Ewg-unsplash-min.jpg');
+    min-height: 100%;
+    background-position: center;
+    background-size: cover;
+  }
