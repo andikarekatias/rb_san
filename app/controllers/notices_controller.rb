@@ -9,6 +9,7 @@ class NoticesController < ApplicationController
 
   # GET /notices/1 or /notices/1.json
   def show
+    @comments = @notice.comments.order(created_at: :desc)
   end
 
   # GET /notices/new

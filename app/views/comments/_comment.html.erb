@@ -1,0 +1,9 @@
+<div class="comment-<%= comment.id %> w3-container">
+    <%= comment.user.name %> <br>
+    <span>Posted <%= time_ago_in_words(comment.created_at) %></span>
+    <% if current_user == comment.user %>
+      <%= button_to "Delete", [notice, comment], class: "w3-button w3-red w3-right", method: :delete %>
+    <% end %>
+    <hr>
+    <%= comment.body %>
+</div>

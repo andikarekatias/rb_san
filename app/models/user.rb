@@ -9,5 +9,6 @@ class User < ApplicationRecord
     self.role = :user
   end
   has_many :pelabuhans
-  has_many :notices
+  has_many :notices, dependent: :destroy
+  has_many :comments, dependent: :destroy
 end

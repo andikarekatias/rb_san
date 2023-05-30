@@ -8,3 +8,10 @@
 
   <%= button_to "Destroy this notice", @notice, method: :delete %>
 </div>
+
+<div class="w3-container">
+  <%= render 'comments/form', notice: @notice %>
+  <% @comments.each do |comment| %>
+    <%= render 'comments/comment', notice: @notice, comment: comment %>
+  <% end %>
+</div>

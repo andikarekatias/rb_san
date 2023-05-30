@@ -23,7 +23,5 @@ function w3_close() {
 
 document.addEventListener('DOMContentLoaded', function() {
   mySidebar = document.getElementById("mySidebar");
-  overlayBg = document.getElementById("myOverlay");
-  console.log(mySidebar);
-  console.log(w3_open);
+  overlayBg = document.getElementById("myOverlay");  
 });
