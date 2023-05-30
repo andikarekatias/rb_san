@@ -9,5 +9,5 @@ class User < ApplicationRecord
     self.role = :user
   end
   has_many :pelabuhans
-  has_many :Pengumumans
+  has_many :notices
 end

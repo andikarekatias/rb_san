@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :pengumumen
+  resources :notices
   resources :pelabuhans
   root 'dashboard#index'
   devise_for :users, skip: [:sessions], controllers: {

@@ -28,12 +28,17 @@
     <%= link_to root_path, class: 'w3-bar-item w3-button w3-padding' do %>
       <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
     <% end %>
-    <%= link_to pelabuhans_path, class: 'w3-bar-item w3-button w3-padding' do %>
-      <i class="fa-solid fa-anchor"></i> Pelabuhan
-    <% end %>   
-    <%= link_to destroy_user_session_path, method: :delete, class: 'w3-bar-item w3-button w3-padding', 'data-turbo-method': :delete do %>
-        <i class="fa fa-sign-out" aria-hidden="true"></i>  Sing Out
-    <% end %><br>
+    <% if current_user.admin? %>
+      <%= link_to notices_path, class: 'w3-bar-item w3-button w3-padding' do %>
+        <i class="fa-solid fa-bullhorn"></i> Pengumuman
+      <% end %>
+      <%= link_to pelabuhans_path, class: 'w3-bar-item w3-button w3-padding' do %>
+        <i class="fa-solid fa-anchor"></i> Pelabuhan
+      <% end %>   
+      <%= link_to destroy_user_session_path, method: :delete, class: 'w3-bar-item w3-button w3-padding', 'data-turbo-method': :delete do %>
+          <i class="fa fa-sign-out" aria-hidden="true"></i>  Sing Out
+      <% end %><br>
+    <% end %>
   </div>
 </nav>
 <% end %>
