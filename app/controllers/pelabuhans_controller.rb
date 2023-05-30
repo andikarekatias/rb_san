@@ -1,9 +1,9 @@
 class PelabuhansController < ApplicationController
   before_action :set_pelabuhan, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user!, except: %i[show index]
   # GET /pelabuhans or /pelabuhans.json
   def index
-    @pelabuhans = Pelabuhan.all
+    @pelabuhans = Pelabuhan.all.order(created_at: :desc)
   end
 
   # GET /pelabuhans/1 or /pelabuhans/1.json
@@ -22,6 +22,7 @@ class PelabuhansController < ApplicationController
   # POST /pelabuhans or /pelabuhans.json
   def create
     @pelabuhan = Pelabuhan.new(pelabuhan_params)
+    @pelabuhan.user = current_user
 
     respond_to do |format|
       if @pelabuhan.save
@@ -65,6 +66,6 @@ class PelabuhansController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pelabuhan_params
-      params.require(:pelabuhan).permit(:daerah, :nama_pelabuhan)
+      params.require(:pelabuhan).permit(:daerah, :nama_pelabuhan,)
     end
 end
