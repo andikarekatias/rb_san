@@ -1,0 +1,11 @@
+<% if notice.present? %>
+<div class="w3-panel w3-blue">
+    <h3>Information!</h3>
+    <p class="notice"><%= notice %></p>
+</div>    
+<% end %>
+<% if alert.present? %>
+<div class="w3-panel w3-red w3-round-xxlarge">
+    <p class="alert"><%= alert %></p>
+</div>
+<% end %>

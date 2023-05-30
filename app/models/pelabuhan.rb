@@ -1,0 +1,2 @@
+class Pelabuhan < ApplicationRecord
+end

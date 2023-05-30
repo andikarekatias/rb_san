@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @pelabuhan %>
+
+<div>
+  <%= link_to "Edit this pelabuhan", edit_pelabuhan_path(@pelabuhan) %> |
+  <%= link_to "Back to pelabuhans", pelabuhans_path %>
+
+  <%= button_to "Destroy this pelabuhan", @pelabuhan, method: :delete %>
+</div>

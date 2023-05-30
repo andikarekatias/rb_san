@@ -2,17 +2,7 @@
   <div class="bgimg w3-display-container w3-text-white">
   <div class="w3-display-middle">
     <h2 style="text-shadow:1px 1px 0 #444">Log in</h2>
-    <% if notice.present? %>
-    <div class="w3-panel w3-blue">
-      <h3>Information!</h3>
-      <p class="notice"><%= notice %></p>
-    </div>    
-    <% end %>
-    <% if alert.present? %>
-    <div class="w3-panel w3-red w3-round-xxlarge">
-      <p class="alert"><%= alert %></p>
-    </div>
-    <% end %>
+    <%= render 'layouts/msg' %>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'w3-input w3-round-xxlarge', placeholder: 'Email' %>

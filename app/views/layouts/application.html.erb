@@ -6,23 +6,18 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>    
     <%= stylesheet_link_tag "application", media: 'all', "data-turbolinks-track": "reload" %>    
-    <%= javascript_importmap_tags %>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+    <script src="https://kit.fontawesome.com/543620e0a3.js" crossorigin="anonymous"></script>    
+    <%= javascript_importmap_tags %>    
   </head>
 
-  <body>
-    <div class="w3-container">         
-      <% if notice.present? %>
-      <div class="w3-panel w3-blue">
-        <h3>Information!</h3>
-        <p class="notice"><%= notice %></p>
-      </div>    
-      <% end %>
-      <% if alert.present? %>
-      <div class="w3-panel w3-red w3-round-xxlarge">
-        <p class="alert"><%= alert %></p>
-      </div>
-      <% end %>
-      <%= yield %>
-    </div>
+  <body class="w3-light-grey">    
+    <%= render 'layouts/sidebar' %>                   
+    <main class="w3-main" style="margin-left:250px;margin-top:43px;">    
+    <%= render 'layouts/msg' %>
+    <%= render 'layouts/header' %>
+    <%= yield %>
+    <%= render 'layouts/footer' %>
+    </main>    
   </body>
 </html>
