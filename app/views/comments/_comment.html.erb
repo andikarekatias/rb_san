@@ -1,9 +1,34 @@
-<div class="comment-<%= comment.id %> w3-container">
-    <%= comment.user.name %> <br>
-    <span>Posted <%= time_ago_in_words(comment.created_at) %></span>
-    <% if current_user == comment.user %>
-      <%= button_to "Delete", [notice, comment], class: "w3-button w3-red w3-right", method: :delete %>
-    <% end %>
-    <hr>
-    <%= comment.body %>
+<div class="comment-<%= comment.id %> w3-container w3-border w3-border-blue w3-section">
+    <div class="w3-row">
+        <div class="w3-container w3-threequarter">
+            <b><%= comment.user.name %></b>
+            <% if (comment.updated_at - comment.created_at) > 1 %>
+                <span class="w3-small">Posted <%= time_ago_in_words(comment.updated_at) %> ago</span>  
+            <% else %>
+                <span class="w3-small">Posted <%= time_ago_in_words(comment.created_at) %> ago</span>
+            <% end %>
+            <div class="" id="cmb-<%= comment.id %>">
+                <%= comment.body %>
+            </div>            
+        </div>
+        <div class="w3-quarter">
+            <% if current_user == comment.user %>                
+                <%= button_to "Delete", [notice, comment], class: "w3-button w3-red w3-right", method: :delete %>
+                <%= link_to 'Edit', nil, remote: true, class: "w3-button w3-yellow w3-right", data: {
+                    controller: "comments",
+                    action: "comments#toggleForm",
+                    comments_form_param: "cme-#{ comment.id }",
+                    comments_body_param: "cmb-#{ comment.id }",
+                } %>                
+            <% end %>
+        </div>        
+    </div>
+    <div class="w3-section w3-border-top w3-border-blue w3-hide" id="cme-<%= comment.id %>">
+        <% if current_user == comment.user %> 
+            <%= render 'comments/form', 
+            notice: @notice, 
+            comment: comment,
+            submit_label: "Update" %>
+        <% end %>
+    </div>
 </div>

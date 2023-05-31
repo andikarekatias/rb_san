@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_30_083452) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_31_075547) do
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -67,6 +67,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_083452) do
     t.index ["user_id"], name: "index_notices_on_user_id"
   end
 
+  create_table "notifications", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "recipient_type", null: false
+    t.bigint "recipient_id", null: false
+    t.string "type", null: false
+    t.text "params", size: :long, collation: "utf8mb4_bin"
+    t.datetime "read_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["read_at"], name: "index_notifications_on_read_at"
+    t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
+    t.check_constraint "json_valid(`params`)", name: "params"
+  end
+
   create_table "pelabuhans", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "daerah"
     t.string "nama_pelabuhan"
@@ -74,15 +87,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_083452) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_pelabuhans_on_user_id"
-  end
-
-  create_table "pengumumen", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
-    t.bigint "user_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id"], name: "index_pengumumen_on_user_id"
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
@@ -110,5 +114,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_30_083452) do
   add_foreign_key "comments", "users"
   add_foreign_key "notices", "users"
   add_foreign_key "pelabuhans", "users"
-  add_foreign_key "pengumumen", "users"
 end
