@@ -10,6 +10,8 @@ class NoticesController < ApplicationController
   # GET /notices/1 or /notices/1.json
   def show
     @comments = @notice.comments.order(created_at: :desc)
+
+    mark_notifications_as_read
   end
 
   # GET /notices/new
@@ -70,4 +72,12 @@ class NoticesController < ApplicationController
     def notice_params
       params.require(:notice).permit(:title, :body, :user_id)
     end
+
+    def mark_notifications_as_read
+      if current_user
+        notifications_to_mark_as_read = @notice.notifications_as_notice.where(recipient: current_user)
+        notifications_to_mark_as_read.update_all(read_at: Time.zone.now)
+      end      
+    end
+
 end

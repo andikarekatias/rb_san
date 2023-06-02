@@ -11,13 +11,13 @@
       <img src="" class="w3-circle w3-margin-right" style="width:46px">
     </div>
     <div class="w3-col s8 w3-bar">
-      <span><strong><%= current_user.name %> [<%= current_user.role %>]</strong></span><br>
-      <a href="#" class="w3-bar-item w3-button"><i class="fa fa-envelope"></i></a>
+      <span><strong><%= current_user.name %> [<%= current_user.role %>]</strong></span><br>      
       <a href="#" class="w3-bar-item w3-button"><i class="fa fa-user"></i></a>
       <%= link_to edit_user_registration_path, class: "w3-bar-item w3-button" do %>
         <i class="fa fa-cog"></i>
       <% end %>
     </div>
+    <%= render 'layouts/notifications' %>
   </div>
   <hr>
   <div class="w3-container">

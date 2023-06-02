@@ -1,0 +1,18 @@
+<% if current_user %>
+<div class="w3-bar-block">
+    <div class="w3-dropdown-hover w3-white">
+        <a href="#" class="w3-button w3-block"><i class="fa fa-envelope"></i> <span class="w3-badge w3-green"><%= @unread.count >= 9 ? "9+" : @unread.count %></span></a>
+        <div id="dashNotif" class="w3-dropdown-content w3-bar-block w3-border">
+            <% @unread.each do |notification|  %>
+                <%= render 'layouts/notification', notification: notification %>
+            <% end %>                          
+            <% if @read.count + @unread.count == 0 %>
+                <p class="w3-bar-item w3-button">No notifications</p>
+            <% end %>
+            <% @read.each do |notification|  %>
+                <%= render 'layouts/notification', notification: notification %>
+            <% end %>
+        </div>
+    </div>
+</div>
+<% end %>    

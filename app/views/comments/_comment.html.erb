@@ -19,7 +19,9 @@
                     action: "comments#toggleForm",
                     comments_form_param: "cme-#{ comment.id }",
                     comments_body_param: "cmb-#{ comment.id }",
-                } %>                
+                    comments_edit_param: "cmel-#{ comment.id }",
+                },
+                id: "cmel-#{ comment.id }" %>                
             <% end %>
         </div>        
     </div>
