@@ -4,7 +4,7 @@ class NoticesController < ApplicationController
 
   # GET /notices or /notices.json
   def index
-    @notices = Notice.all
+    @notices = Notice.all.order(created_at: :desc)
   end
 
   # GET /notices/1 or /notices/1.json
@@ -65,7 +65,7 @@ class NoticesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_notice
-      @notice = Notice.find(params[:id])
+      @notice = Notice.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
