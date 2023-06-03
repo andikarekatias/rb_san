@@ -1,0 +1,22 @@
+<h1 class="w3-center"><%= pluralize(@pelabuhans.count, "Result") %></h1>
+
+<%= render 'search/form' %>
+
+<div class="w3-section">
+    <table class="w3-table-all w3-hoverable">
+        <thead>
+            <tr>
+                <th> <%= sort_link(@query, :daerah, "Daerah", default_order: :asc) %> </th>
+                <th> <%= sort_link(@query, :nama_pelabuhan, "Nama Pelabuhan") %> </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @pelabuhans.each do |pelabuhan| %>
+            <tr>
+                <td><%= link_to pelabuhan.daerah, pelabuhan %></td>
+                <td><%= link_to pelabuhan.nama_pelabuhan, pelabuhan %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

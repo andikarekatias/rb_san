@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
     before_action :set_notifications, if: :current_user
     layout :set_layout
+    before_action :set_query
+
+    def set_query
+        @query = Pelabuhan.ransack(params[:q])
+    end
 
     private
 
