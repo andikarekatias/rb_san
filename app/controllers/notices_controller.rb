@@ -23,7 +23,7 @@ class NoticesController < ApplicationController
   def edit
   end
 
-  # POST /notices or /notices.json
+  # notice /notices or /notices.json
   def create
     @notice = Notice.new(notice_params)
     @notice.user = current_user
@@ -65,9 +65,12 @@ class NoticesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_notice
-      @notice = Notice.friendly.find(params[:id])
+      @notice = Notice.find(params[:id])
+      # If an old id or a numeric id was used to find the record, then
+      # the request path will not match the notice_path, and we should do
+      # a 301 redirect that uses the current friendly id.
+      redirect_to @notice, :status => :moved_permanently if params[:id] != @notice.slug       
     end
-
     # Only allow a list of trusted parameters through.
     def notice_params
       params.require(:notice).permit(:title, :body, :user_id)
