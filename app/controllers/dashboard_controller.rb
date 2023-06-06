@@ -9,4 +9,24 @@ class DashboardController < ApplicationController
 
   def index
   end
+
+  def pelabuhans
+    
+  end
+
+  def notices
+  end
+
+  def comments  
+  end
+
+  def users
+    
+  end
+
+  def show_notice
+    
+  end
+
+
 end

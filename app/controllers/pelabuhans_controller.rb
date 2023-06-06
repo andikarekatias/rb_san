@@ -1,6 +1,6 @@
 class PelabuhansController < ApplicationController
   before_action :set_pelabuhan, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: %i[show index]
+  before_action :authenticate_user!
   # GET /pelabuhans or /pelabuhans.json
   def index
     @pelabuhans = Pelabuhan.all.order(created_at: :desc)

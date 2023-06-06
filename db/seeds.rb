@@ -20,6 +20,11 @@ User.create(email: "andika.rekatias@gmail.com",
             password_confirmation: "password",
             name: "Reka")
 
+Pelabuhan.create(daerah: "Batam",
+                nama_pelabuhan: "Pelabuhan Punggur")
+Pelabuhan.create(daerah: "Batam",
+                nama_pelabuhan: "Batam Center Ferry Terminal")
+
 10.times do |x|
     notice = Notice.create(title: "Pengumuman #{x}",
                             body: "Pengumuman #{x} lorem ipsum dolor si amet",

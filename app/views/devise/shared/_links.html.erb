@@ -3,7 +3,7 @@
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <%= link_to "Sign up", new_registration_path(resource_name), class: 'w3-hover-text-green w3-hover', style: 'text-shadow:1px 1px 0 #444; text-decoration:none;'  %><br />
+  <%= link_to "Sign up", new_user_registration_c_path, class: 'w3-hover-text-green w3-hover', style: 'text-shadow:1px 1px 0 #444; text-decoration:none;'  %><br />
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>

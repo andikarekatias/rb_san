@@ -1,15 +1,16 @@
 class NoticesController < ApplicationController
   before_action :set_notice, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: %i[show index]
+  before_action :authenticate_user!, except: %i[index show]
+  before_action :authorize_user, except: %i[index show]
 
   # GET /notices or /notices.json
   def index
-    @notices = Notice.all.order(created_at: :desc)
+    @notices = Notice.includes(:user, :rich_text_body).all.order(created_at: :desc)
   end
 
   # GET /notices/1 or /notices/1.json
   def show
-    @comments = @notice.comments.order(created_at: :desc)
+    @comments = @notice.comments.includes(:user, :rich_text_body).order(created_at: :desc)
 
     mark_notifications_as_read
   end
@@ -26,7 +27,7 @@ class NoticesController < ApplicationController
   # notice /notices or /notices.json
   def create
     @notice = Notice.new(notice_params)
-    @notice.user = current_user
+    @notice.user = current_user    
 
     respond_to do |format|
       if @notice.save
@@ -63,6 +64,12 @@ class NoticesController < ApplicationController
   end
 
   private
+
+  def authorize_user
+    notice = @notice || Notice
+    authotize notice
+  end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_notice
       @notice = Notice.find(params[:id])

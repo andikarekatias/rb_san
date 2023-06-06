@@ -1,7 +1,14 @@
 Rails.application.routes.draw do
-  get 'search', to: "search#index"
-  resources :pelabuhans
   root 'dashboard#index'
+  authenticated :user, ->(user) { user.admin? } do    
+    get 'dashboard/pelabuhans'
+    get 'dashboard/notices'
+    get 'dashboard/comments'
+    get 'dashboard/users'
+    get 'dashboard/show_notice'
+  end
+  get 'search', to: "search#index"
+  resources :pelabuhans  
   devise_for :users, skip: [:sessions], controllers: {
     session: 'users/sessions',
     registrations: 'users/registrations'
@@ -9,7 +16,8 @@ Rails.application.routes.draw do
   as :user do
     get 'login', to: 'devise/sessions#new', as: :new_user_session    
     post 'login', to: 'devise/sessions#create', as: :user_session
-    delete 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session    
+    delete 'logout', to: 'devise/sessions#destroy', as: :destroy_user_session
+    get 'register', to: 'devise/registrations#new', as: :new_user_registration_c    
   end
 
   resources :notices do 
