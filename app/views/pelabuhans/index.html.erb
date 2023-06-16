@@ -2,8 +2,8 @@
 
 <h1>Pelabuhans</h1>
 <h2>New Pelabuhan</h2>
-<%= render 'form', pelabuhan: Pelabuhan.new %>
 <%= render 'search/form' %>
+<%= render 'form', pelabuhan: Pelabuhan.new %>
 <div id="pelabuhans">
   <% @pelabuhans.each do |pelabuhan| %>
     <%= render pelabuhan %>

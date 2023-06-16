@@ -1,11 +1,11 @@
 // Get the Sidebar
-var mySidebar;
-  
+var mySidebar = document.getElementById("mySidebar");
+
 // Get the DIV with overlay effect
-var overlayBg;
+var overlayBg = document.getElementById("myOverlay");
 
 // Toggle between showing and hiding the sidebar, and add overlay effect
-function w3_open() {
+window.w3_open = function () {
   if (mySidebar.style.display === 'block') {
     mySidebar.style.display = 'none';
     overlayBg.style.display = "none";
@@ -16,12 +16,7 @@ function w3_open() {
 }
 
 // Close the sidebar with the close button
-function w3_close() {
+window.w3_close = function () {
   mySidebar.style.display = "none";
   overlayBg.style.display = "none";
 }
-
-document.addEventListener('DOMContentLoaded', function() {
-  mySidebar = document.getElementById("mySidebar");
-  overlayBg = document.getElementById("myOverlay");  
-});
