@@ -67,7 +67,7 @@ class NoticesController < ApplicationController
 
   def authorize_user
     notice = @notice || Notice
-    authotize notice
+    authorize notice
   end
 
     # Use callbacks to share common setup or constraints between actions.
