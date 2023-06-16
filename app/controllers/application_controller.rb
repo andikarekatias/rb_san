@@ -27,6 +27,9 @@ class ApplicationController < ActionController::Base
 
     def set_page_title
         @page_title = format_page_title(request.original_url)
+        if @page_title == "- "
+            @page_title = "- Dashboard"
+        end
     end
 
     def format_page_title(url)

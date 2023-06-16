@@ -1,6 +1,8 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Pelabuhans</h1>
+<h2>New Pelabuhan</h2>
+<%= render 'form', pelabuhan: Pelabuhan.new %>
 <%= render 'search/form' %>
 <div id="pelabuhans">
   <% @pelabuhans.each do |pelabuhan| %>

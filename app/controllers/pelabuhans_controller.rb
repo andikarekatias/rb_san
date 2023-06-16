@@ -27,9 +27,11 @@ class PelabuhansController < ApplicationController
     respond_to do |format|
       if @pelabuhan.save
         format.html { redirect_to pelabuhan_url(@pelabuhan), notice: "Pelabuhan was successfully created." }
+        format.turbo_stream { render :create, locals: {pelabuhan: @pelabuhan} }
         format.json { render :show, status: :created, location: @pelabuhan }
       else
         format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render :new, locals: {pelabuhan: @pelabuhan} }
         format.json { render json: @pelabuhan.errors, status: :unprocessable_entity }
       end
     end
