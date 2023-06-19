@@ -5,7 +5,7 @@ class NoticesController < ApplicationController
 
   # GET /notices or /notices.json
   def index
-    @notices = Notice.includes(:user, :rich_text_body).all.order(created_at: :desc)
+    @notices = Notice.includes(:user, :rich_text_body).all.order(created_at: :desc).page(params[:page]).per(5)
   end
 
   # GET /notices/1 or /notices/1.json

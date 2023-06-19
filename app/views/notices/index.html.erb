@@ -12,3 +12,5 @@
 </div>
 
 <%= link_to "New notice", new_notice_path %>
+
+<%= paginate @notices, window: 2 %>

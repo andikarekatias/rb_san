@@ -84,3 +84,5 @@ gem "friendly_id", "~> 5.5"
 gem "bullet", "~> 7.0"
 
 gem "pundit", "~> 2.3"
+
+gem "kaminari", "~> 1.2"
