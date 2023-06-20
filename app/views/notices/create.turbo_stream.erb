@@ -1,0 +1,4 @@
+<%= turbo_stream.prepend "notices" do %>
+    <%= render partial: "notice_table", locals: {notice: @notice} %>
+<% end %>
+<%= turbo_stream.replace "new_notice", partial: "form", locals: { notice: Notice.new } %>

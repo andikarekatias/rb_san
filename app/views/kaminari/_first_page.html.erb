@@ -6,6 +6,6 @@
     per_page:      number of items to fetch per page
     remote:        data-remote
 -%>
-<span class="first w3-bar-item w3-button w3-hover-blue w3-text-blue">
-  <%= link_to_unless current_page.first?, t('views.pagination.first').html_safe, url, remote: remote %>
+<span class="first">
+  <%= link_to_unless current_page.first?, t('views.pagination.first').html_safe, url, remote: remote, class: 'w3-bar-item w3-button w3-hover-blue w3-text-blue' %>
 </span>

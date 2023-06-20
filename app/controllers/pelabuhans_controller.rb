@@ -31,7 +31,7 @@ class PelabuhansController < ApplicationController
         format.json { render :show, status: :created, location: @pelabuhan }
       else
         format.html { render :new, status: :unprocessable_entity }
-        format.turbo_stream { render :new, locals: {pelabuhan: @pelabuhan} }
+        format.turbo_stream { render :new, status: :unprocessable_entity, locals: {pelabuhan: @pelabuhan} }
         format.json { render json: @pelabuhan.errors, status: :unprocessable_entity }
       end
     end

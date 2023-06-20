@@ -1,0 +1,18 @@
+    <tr id="<%= dom_id notice %>" is="turbo-frame">
+        <td><%= notice.title %></td>
+        <td><%= notice.body.to_plain_text.slice(0, 15) %></td>
+        <td><%= notice.user.name %></td>
+        <td>
+            <div class="w3-row">
+                <div class="w3-third">
+                    <%= link_to "Show this notice", notice %>
+                </div>
+                <div class="w3-third">
+                    <%= link_to "Edit this notice", edit_notice_path(notice) %>
+                </div>
+                <div class="w3-third">
+                    <%= button_to "Destroy this notice", notice, method: :delete %>
+                </div>
+            </div>
+        </td>
+    </tr>

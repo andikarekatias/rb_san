@@ -1,27 +1,30 @@
-<%= form_with(model: notice) do |form| %>
-  <% if notice.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(notice.errors.count, "error") %> prohibited this notice from being saved:</h2>
+<%= turbo_frame_tag "new_notice" do %>
+  <%= form_with(model: notice) do |form| %>
+    <% if notice.errors.any? %>
+      <div class="w3-panel w3-red w3-display-container">
+      <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">&times;</span>
+        <h2><%= pluralize(notice.errors.count, "error") %> prohibited this Pengumuman from being saved:</h2>
 
-      <ul>
-        <% notice.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+        <ul class="w3-ul w3-border-top w3-border-bottom w3-section">
+          <% notice.errors.each do |error| %>
+            <li><i class="fa fa-circle-o" aria-hidden="true"></i> <%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <%= form.label :title, style: "display: block" %>
+      <%= form.text_field :title %>
+    </div>
+
+    <div>
+      <%= form.label :body, style: "display: block" %>
+      <%= form.rich_text_area :body, class: "w3-section"  %>
+    </div>  
+
+    <div>
+      <%= form.submit "Submit", class: 'w3-button w3-blue'%>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
-  </div>
-
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.rich_text_area :body, class: "w3-section"  %>
-  </div>  
-
-  <div>
-    <%= form.submit %>
-  </div>
 <% end %>

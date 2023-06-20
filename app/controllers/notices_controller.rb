@@ -1,6 +1,6 @@
 class NoticesController < ApplicationController
   before_action :set_notice, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!
   before_action :authorize_user, except: %i[index show]
 
   # GET /notices or /notices.json
@@ -32,9 +32,11 @@ class NoticesController < ApplicationController
     respond_to do |format|
       if @notice.save
         format.html { redirect_to notice_url(@notice), notice: "Notice was successfully created." }
+        format.turbo_stream { render :create, locals: {notice: @notice} }
         format.json { render :show, status: :created, location: @notice }
       else
         format.html { render :new, status: :unprocessable_entity }
+        format.turbo_stream { render :new, status: :unprocessable_entity, locals: {notice: @notice} }
         format.json { render json: @notice.errors, status: :unprocessable_entity }
       end
     end

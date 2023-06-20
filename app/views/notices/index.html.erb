@@ -1,16 +1,21 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Notices</h1>
-
-<div id="notices">
+<h1>Pengumuman</h1>
+<%= render 'form', notice: Notice.new %>
+<table class="w3-table-all w3-section">
+  <thead>
+      <tr>
+          <th>Title</th>
+          <th>Body</th>
+          <th>Posted By</th>
+          <th>Action</th>
+      </tr>    
+  </thead>
+  <tbody id="notices" is="turbo-frame">
   <% @notices.each do |notice| %>
-    <%= render notice %>
-    <p>
-      <%= link_to "Show this notice", notice %>
-    </p>
+    <%= render partial: 'notice_table', locals: {notice: notice} %>              
   <% end %>
-</div>
-
-<%= link_to "New notice", new_notice_path %>
+  </tbody>
+</table>
 
 <%= paginate @notices, window: 2 %>
