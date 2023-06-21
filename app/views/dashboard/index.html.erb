@@ -1,4 +1,15 @@
-<h1>Dashboard#index</h1>
+<div class="w3-container w3-dark-grey w3-padding-16 w3-card-4">
+    <h1 class="ar-m-0"><i class="fa-solid fa-bullhorn"></i> Pengumuman</h1>
+    <% if @notices.present? %>
+      <% @notices.each do |notice| %>
+        <ul class="w3-ul">
+            <li><%= link_to notice.title, notice_path(notice) %></li>
+        </ul>
+      <% end %>
+    <% else %>
+      <p>No notices found.</p>
+    <% end %>
+</div>
 
 <% if current_user %>
     <p>Hello <%= current_user.email %> </p>

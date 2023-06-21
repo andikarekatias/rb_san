@@ -5,13 +5,23 @@
         <td>
             <div class="w3-row">
                 <div class="w3-third">
-                    <%= link_to "Show this notice", notice %>
+                    <button class="w3-button">
+                    <%= link_to notice_path(notice) do %>
+                        <i class="fa fa-eye w3-text-green" aria-hidden="true"></i>
+                    <% end %>
+                    </button>
                 </div>
                 <div class="w3-third">
-                    <%= link_to "Edit this notice", edit_notice_path(notice) %>
+                    <button class="w3-button">
+                    <%= link_to edit_notice_path(notice) do %>
+                        <i class="fa fa-pencil-square-o w3-text-blue" aria-hidden="true"></i>
+                    <% end %>
+                    </button>
                 </div>
                 <div class="w3-third">
-                    <%= button_to "Destroy this notice", notice, method: :delete %>
+                    <%= button_to notice_path(notice), method: :delete, class: "destroy-button w3-button" do %>
+                        <i class="fa fa-trash-o w3-text-red" aria-hidden="true"></i>
+                    <% end %>
                 </div>
             </div>
         </td>

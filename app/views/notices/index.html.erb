@@ -2,6 +2,7 @@
 
 <h1>Pengumuman</h1>
 <%= render 'form', notice: Notice.new %>
+<div class="w3-responsive">
 <table class="w3-table-all w3-section">
   <thead>
       <tr>
@@ -17,5 +18,5 @@
   <% end %>
   </tbody>
 </table>
-
+</div>
 <%= paginate @notices, window: 2 %>

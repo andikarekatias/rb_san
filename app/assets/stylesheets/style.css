@@ -4,6 +4,9 @@ html,body,h1,h2,h3,h4,h5 {
 a {
     text-decoration: none;
 }
+.ar-m-0{
+    margin: 0;
+}
 /* Login Page */
 .login-page {
     height: 100%;
