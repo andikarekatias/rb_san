@@ -3,11 +3,15 @@ class PelabuhansController < ApplicationController
   before_action :authenticate_user!
   # GET /pelabuhans or /pelabuhans.json
   def index
-    @pelabuhans = Pelabuhan.all.order(created_at: :desc)
+    @pelabuhans = Pelabuhan.includes(:user).all.order(created_at: :desc).page(params[:page]).per(5)
+    add_breadcrumb('Pelabuhan', nil, true)
   end
 
   # GET /pelabuhans/1 or /pelabuhans/1.json
   def show
+    add_breadcrumb('Pelabuhan', pelabuhans_path, false)
+    add_breadcrumb(@pelabuhan.daerah, nil, true)
+    add_breadcrumb(@pelabuhan.nama_pelabuhan, nil, true)
   end
 
   # GET /pelabuhans/new
@@ -25,7 +29,11 @@ class PelabuhansController < ApplicationController
     @pelabuhan.user = current_user
 
     respond_to do |format|
-      if @pelabuhan.save
+      if Pelabuhan.exists?(nama_pelabuhan: @pelabuhan.nama_pelabuhan)        
+        format.html { redirect_to pelabuhan_url(@pelabuhan), alert: "Pelabuhan with the same name already exists." }
+        format.turbo_stream { render :new, status: :unprocessable_entity, locals: { pelabuhan: @pelabuhan } }
+        format.json { render json: @pelabuhan.errors, status: :unprocessable_entity }
+      elsif @pelabuhan.save
         format.html { redirect_to pelabuhan_url(@pelabuhan), notice: "Pelabuhan was successfully created." }
         format.turbo_stream { render :create, locals: {pelabuhan: @pelabuhan} }
         format.json { render :show, status: :created, location: @pelabuhan }

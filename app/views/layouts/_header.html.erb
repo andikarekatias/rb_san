@@ -1,3 +1,11 @@
 <header class="w3-container" style="padding-top:22px">
-    <h5><b><i class="fa fa-dashboard"></i> My Dashboard</b></h5>
+    <h5><i class="fa fa-dashboard"></i> <a href="/" class="w3-text-blue">Dashboard </a>
+      <% @breadcrumbs.each do |breadcrumb| %>
+        <% if breadcrumb[:current] %>
+            / <%= breadcrumb[:label] %>        
+        <% else %>
+            / <%= link_to breadcrumb[:label], breadcrumb[:path], class: 'w3-text-blue' %>
+        <% end %>
+      <% end %>
+     </h5>    
 </header>

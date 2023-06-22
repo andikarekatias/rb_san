@@ -1,4 +1,4 @@
 <%= turbo_stream.prepend "pelabuhans" do %>
-    <%= render partial: "pelabuhan", locals: {pelabuhan: @pelabuhan} %>
+    <%= render partial: "pelabuhan_table", locals: {pelabuhan: @pelabuhan} %>
 <% end %>
 <%= turbo_stream.replace "new_pelabuhan", partial: "form", locals: { pelabuhan: Pelabuhan.new } %>

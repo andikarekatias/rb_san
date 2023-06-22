@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
     include Pundit::Authorization
+    before_action :set_breadcrumbs
     rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
     before_action :set_notifications, if: :current_user
     layout :set_layout
@@ -8,6 +9,18 @@ class ApplicationController < ActionController::Base
 
     def set_query
         @query = Pelabuhan.ransack(params[:q])
+    end
+
+    def add_breadcrumb(label, path, current = false)
+        @breadcrumbs << {
+            label: label,
+            path: path,
+            current: current
+        }
+    end
+
+    def set_breadcrumbs
+        @breadcrumbs = []
     end
 
     private

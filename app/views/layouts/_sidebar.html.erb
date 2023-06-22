@@ -26,17 +26,13 @@
       <i class="fa fa-tachometer" aria-hidden="true"></i> Dashboard
     <% end %>
     <% if current_user.admin? %>
-    <div class="w3-dropdown-hover">
+    
       <%= link_to notices_path, class: 'w3-bar-item w3-button w3-padding' do %>
         <i class="fa-solid fa-bullhorn"></i> Pengumuman
-      <% end %>
-      <div class="w3-dropdown-content w3-bar-block w3-border">
-        <%= link_to "Tambah Pengumuman", new_notice_path, class: 'w3-bar-item w3-button'%>        
-      </div>
-    </div>
+      <% end %>    
       <%= link_to pelabuhans_path, class: 'w3-bar-item w3-button w3-padding' do %>
         <i class="fa-solid fa-anchor"></i> Pelabuhan
-      <% end %>         
+      <% end %>  
     <% end %>
     <%= link_to destroy_user_session_path, method: :delete, class: 'w3-bar-item w3-button w3-padding', 'data-turbo-method': :delete do %>
           <i class="fa fa-sign-out" aria-hidden="true"></i>  Sing Out

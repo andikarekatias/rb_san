@@ -1,7 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>RbSan <%= @page_title %></title>
+    <% if @breadcrumbs.present? %>
+      <% @breadcrumbs.each do |breadcrumb| %>
+        <% if breadcrumb[:current] %>
+          <title>RbSan - <%= breadcrumb[:label] %></title>      
+        <% end %>
+      <% end %>
+    <% else %>
+      <title>RbSan - Dashboard</title>
+    <% end %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>    

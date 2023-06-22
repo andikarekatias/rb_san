@@ -14,16 +14,16 @@
     <% end %>
     <div>
       <%= form.label :daerah, style: "display: block" %>
-      <%= form.text_field :daerah %>
+      <%= form.text_field :daerah, class: 'w3-input' %>
     </div>
 
     <div>
       <%= form.label :nama_pelabuhan, style: "display: block" %>
-      <%= form.text_field :nama_pelabuhan %>
+      <%= form.text_field :nama_pelabuhan, class: 'w3-input' %>
     </div>
 
-    <div>
-      <%= form.submit %>
+    <div class="w3-section">
+      <%= form.submit "Submit", class: 'w3-button w3-blue'%>
     </div>
   <% end %>
 <% end %>

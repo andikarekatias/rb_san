@@ -1,16 +1,21 @@
-<p style="color: green"><%= notice %></p>
-
 <h1>Pelabuhans</h1>
-<h2>New Pelabuhan</h2>
 <%= render 'search/form' %>
 <%= render 'form', pelabuhan: Pelabuhan.new %>
-<div id="pelabuhans">
+<div class="w3-responsive">
+<table class="w3-table-all w3-section">
+  <thead>
+      <tr>
+          <th>Title</th>
+          <th>Body</th>
+          <th>Posted By</th>
+          <th>Action</th>
+      </tr>    
+  </thead>
+  <tbody id="pelabuhans" is="turbo-frame">
   <% @pelabuhans.each do |pelabuhan| %>
-    <%= render pelabuhan %>
-    <p>
-      <%= link_to "Show this pelabuhan", pelabuhan %>
-    </p>
+    <%= render partial: 'pelabuhan_table', locals: {pelabuhan: pelabuhan} %>              
   <% end %>
+  </tbody>
+</table>
 </div>
-
-<%= link_to "New pelabuhan", new_pelabuhan_path %>
+<%= paginate @pelabuhans, window: 2 %>

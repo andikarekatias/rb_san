@@ -2,7 +2,7 @@ class DashboardController < ApplicationController
   before_action :authenticate_user!
 
   def index    
-    @notices = Notice.all.order(created_at: :desc).limit(5)
+    @notices = Notice.all.order(created_at: :desc).limit(5)    
   end
 
   protected

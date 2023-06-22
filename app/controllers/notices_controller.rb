@@ -6,6 +6,7 @@ class NoticesController < ApplicationController
   # GET /notices or /notices.json
   def index
     @notices = Notice.includes(:user, :rich_text_body).all.order(created_at: :desc).page(params[:page]).per(5)
+    add_breadcrumb('Pengumuman', nil, true)
   end
 
   # GET /notices/1 or /notices/1.json
@@ -13,11 +14,15 @@ class NoticesController < ApplicationController
     @comments = @notice.comments.includes(:user, :rich_text_body).order(created_at: :desc)
 
     mark_notifications_as_read
+    add_breadcrumb('Pengumuman', notices_path, false)
+    add_breadcrumb(@notice.title, nil, true)
   end
 
   # GET /notices/new
   def new
     @notice = Notice.new
+    add_breadcrumb('Pengumuman', notices_path, false)
+    add_breadcrumb('Tambah Pengumuman', nil, true)
   end
 
   # GET /notices/1/edit

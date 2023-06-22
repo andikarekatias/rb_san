@@ -1,0 +1,28 @@
+    <tr id="<%= dom_id pelabuhan %>" is="turbo-frame">
+        <td><%= pelabuhan.daerah %></td>
+        <td><%= pelabuhan.nama_pelabuhan %></td>
+        <td><%= pelabuhan.user.name %></td>
+        <td>
+            <div class="w3-row">
+                <div class="w3-third">
+                    <button class="w3-button">
+                    <%= link_to pelabuhan_path(pelabuhan) do %>
+                        <i class="fa fa-eye w3-text-green" aria-hidden="true"></i>
+                    <% end %>
+                    </button>
+                </div>
+                <div class="w3-third">
+                    <button class="w3-button">
+                    <%= link_to edit_pelabuhan_path(pelabuhan) do %>
+                        <i class="fa fa-pencil-square-o w3-text-blue" aria-hidden="true"></i>
+                    <% end %>
+                    </button>
+                </div>
+                <div class="w3-third">
+                    <%= button_to pelabuhan_path(pelabuhan), method: :delete, class: "destroy-button w3-button" do %>
+                        <i class="fa fa-trash-o w3-text-red" aria-hidden="true"></i>
+                    <% end %>
+                </div>
+            </div>
+        </td>
+    </tr>
