@@ -33,7 +33,15 @@
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "current-password" %>
   </div>
-
+  <% if current_user.image.present? %>
+    <%= image_tag(current_user.image, alt: "avatar", class: "w3-circle w3-margin-right", style: "width:100px") %>
+  <% else %>
+      <img src="https://www.w3schools.com/w3images/avatar3.png" alt="avatar" class="w3-circle w3-margin-right" style="width:100px">
+  <% end %>    
+  <div>
+    <%= f.label :image %> <br>
+    <%= f.file_field :image %>
+  </div>
   <div class="actions">
     <%= f.submit "Update" %>
   </div>
