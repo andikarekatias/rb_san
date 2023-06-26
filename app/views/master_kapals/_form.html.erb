@@ -1,0 +1,127 @@
+<%= form_with(model: master_kapal) do |form| %>
+  <% if master_kapal.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(master_kapal.errors.count, "error") %> prohibited this master_kapal from being saved:</h2>
+
+      <ul>
+        <% master_kapal.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :nama_kapal, style: "display: block" %>
+    <%= form.text_field :nama_kapal %>
+  </div>
+
+  <div>
+    <%= form.label :bendera, style: "display: block" %>
+    <%= form.text_field :bendera %>
+  </div>
+
+  <div>
+    <%= form.label :pemilik, style: "display: block" %>
+    <%= form.text_field :pemilik %>
+  </div>
+
+  <div>
+    <%= form.label :alamat_owner, style: "display: block" %>
+    <%= form.text_field :alamat_owner %>
+  </div>
+
+  <div>
+    <%= form.label :jenis_pelayaran, style: "display: block" %>
+    <%= form.text_field :jenis_pelayaran %>
+  </div>
+
+  <div>
+  <%= form.label :jenis_kapal, style: "display: block" %>
+  <%= form.select :jenis_kapal, MasterKapal.jenis_kapals.keys, {}, class: "form-control" %>
+</div>
+
+
+  <div>
+    <%= form.label :imo_number, style: "display: block" %>
+    <%= form.number_field :imo_number %>
+  </div>
+
+  <div>
+    <%= form.label :call_sign, style: "display: block" %>
+    <%= form.text_field :call_sign %>
+  </div>
+
+  <div>
+    <%= form.label :dwt, style: "display: block" %>
+    <%= form.number_field :dwt %>
+  </div>
+
+  <div>
+    <%= form.label :gt, style: "display: block" %>
+    <%= form.number_field :gt %>
+  </div>
+
+  <div>
+    <%= form.label :loa, style: "display: block" %>
+    <%= form.number_field :loa %>
+  </div>
+
+  <div>
+    <%= form.label :draft_depan, style: "display: block" %>
+    <%= form.number_field :draft_depan %>
+  </div>
+
+  <div>
+    <%= form.label :draft_belakang, style: "display: block" %>
+    <%= form.number_field :draft_belakang %>
+  </div>
+
+  <div>
+    <%= form.label :hp_mesin, style: "display: block" %>
+    <%= form.number_field :hp_mesin %>
+  </div>
+  <div>
+    <strong>Surat Ukur:</strong>
+    <% if master_kapal.surat_ukur.attached? %>      
+      <button onclick="sanTampil('<%= master_kapal.surat_ukur %>')" class="w3-button w3-blue">Tampil</button>      
+      <embed src="<%= url_for(master_kapal.surat_ukur) %>" type="application/pdf" width="500" height="600" id="<%= master_kapal.surat_ukur %>" class="w3-hide">
+      <%= link_to 'Download', rails_blob_path(master_kapal.surat_ukur, disposition: 'attachment') %>
+    <% else %>
+      No Surat Ukur Uploaded
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :surat_ukur %> <br>
+    <%= form.file_field :surat_ukur %>
+  </div>
+  <div>
+    <strong>Surat Laut:</strong>
+    <% if master_kapal.surat_laut.attached? %>      
+      <button onclick="sanTampil('<%= master_kapal.surat_laut %>')" class="w3-button w3-blue">Tampil</button>
+      <embed src="<%= url_for(master_kapal.surat_laut) %>" type="application/pdf" width="500" height="600" id="<%= master_kapal.surat_laut %>" class="w3-hide">
+      <%= link_to 'Download', rails_blob_path(master_kapal.surat_laut, disposition: 'attachment') %>
+    <% else %>
+      No Surat Laut Uploaded
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :surat_laut %> <br>
+    <%= form.file_field :surat_laut %>
+  </div>
+  <div>
+    <strong>Foto Kapal:</strong>
+    <% if master_kapal.foto_kapal.attached? %>
+      <%= link_to image_tag(master_kapal.foto_kapal.variant(resize_to_limit: [200, 200])), rails_blob_path(master_kapal.foto_kapal, disposition: 'attachment') %>
+    <% else %>
+      No Foto Kapal Uploaded
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :foto_kapal %> <br>
+    <%= form.file_field :foto_kapal %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

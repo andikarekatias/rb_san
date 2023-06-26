@@ -1,0 +1,33 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nama_kapal: MyString
+  bendera: MyString
+  pemilik: MyString
+  alamat_owner: MyString
+  jenis_pelayaran: MyString
+  jenis_kapal: 1
+  imo_number: 1
+  call_sign: MyString
+  dwt: 1
+  gt: 1
+  loa: 1
+  draft_depan: 1
+  draft_belakang: 1
+  hp_mesin: 1
+
+two:
+  nama_kapal: MyString
+  bendera: MyString
+  pemilik: MyString
+  alamat_owner: MyString
+  jenis_pelayaran: MyString
+  jenis_kapal: 1
+  imo_number: 1
+  call_sign: MyString
+  dwt: 1
+  gt: 1
+  loa: 1
+  draft_depan: 1
+  draft_belakang: 1
+  hp_mesin: 1

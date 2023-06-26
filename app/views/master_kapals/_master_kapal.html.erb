@@ -1,0 +1,99 @@
+<div id="<%= dom_id master_kapal %>">
+  <p>
+    <strong>Nama kapal:</strong>
+    <%= master_kapal.nama_kapal %>
+  </p>
+
+  <p>
+    <strong>Bendera:</strong>
+    <%= master_kapal.bendera %>
+  </p>
+
+  <p>
+    <strong>Pemilik:</strong>
+    <%= master_kapal.pemilik %>
+  </p>
+
+  <p>
+    <strong>Alamat owner:</strong>
+    <%= master_kapal.alamat_owner %>
+  </p>
+
+  <p>
+    <strong>Jenis pelayaran:</strong>
+    <%= master_kapal.jenis_pelayaran %>
+  </p>
+
+  <p>
+    <strong>Jenis kapal:</strong>
+    <%= master_kapal.jenis_kapal %>
+  </p>
+
+  <p>
+    <strong>Imo number:</strong>
+    <%= master_kapal.imo_number %>
+  </p>
+
+  <p>
+    <strong>Call sign:</strong>
+    <%= master_kapal.call_sign %>
+  </p>
+
+  <p>
+    <strong>Dwt:</strong>
+    <%= master_kapal.dwt %>
+  </p>
+
+  <p>
+    <strong>Gt:</strong>
+    <%= master_kapal.gt %>
+  </p>
+
+  <p>
+    <strong>Loa:</strong>
+    <%= master_kapal.loa %>
+  </p>
+
+  <p>
+    <strong>Draft depan:</strong>
+    <%= master_kapal.draft_depan %>
+  </p>
+
+  <p>
+    <strong>Draft belakang:</strong>
+    <%= master_kapal.draft_belakang %>
+  </p>
+
+  <p>
+    <strong>Hp mesin:</strong>
+    <%= master_kapal.hp_mesin %>
+  </p>
+<div>
+    <strong>Surat Ukur:</strong>
+    <% if master_kapal.surat_ukur.attached? %>      
+      <button onclick="sanTampil('<%= master_kapal.surat_ukur %>')" class="w3-button w3-blue">Tampil</button>      
+      <embed src="<%= url_for(master_kapal.surat_ukur) %>" type="application/pdf" width="500" height="600" id="<%= master_kapal.surat_ukur %>" class="w3-hide">
+      <%= link_to 'Download', rails_blob_path(master_kapal.surat_ukur, disposition: 'attachment') %>
+    <% else %>
+      No Surat Ukur Uploaded
+    <% end %>
+  </div>
+  <div>
+    <strong>Surat Laut:</strong>
+    <% if master_kapal.surat_laut.attached? %>      
+      <button onclick="sanTampil('<%= master_kapal.surat_laut %>')" class="w3-button w3-blue">Tampil</button>
+      <embed src="<%= url_for(master_kapal.surat_laut) %>" type="application/pdf" width="500" height="600" id="<%= master_kapal.surat_laut %>" class="w3-hide">
+      <%= link_to 'Download', rails_blob_path(master_kapal.surat_laut, disposition: 'attachment') %>
+    <% else %>
+      No Surat Laut Uploaded
+    <% end %>
+  </div>
+  <div>
+    <strong>Foto Kapal:</strong>
+    <% if master_kapal.foto_kapal.attached? %>
+      <%= link_to image_tag(master_kapal.foto_kapal.variant(resize_to_limit: [200, 200])), rails_blob_path(master_kapal.foto_kapal, disposition: 'attachment') %>
+    <% else %>
+      No Foto Kapal Uploaded
+    <% end %>
+  </div>
+</div>

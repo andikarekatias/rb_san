@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_05_084742) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_26_060247) do
   create_table "action_text_rich_texts", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "name", null: false
     t.text "body", size: :long
@@ -69,6 +69,25 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_084742) do
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
   end
 
+  create_table "master_kapals", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "nama_kapal"
+    t.string "bendera"
+    t.string "pemilik"
+    t.string "alamat_owner"
+    t.string "jenis_pelayaran"
+    t.integer "jenis_kapal"
+    t.integer "imo_number"
+    t.string "call_sign"
+    t.integer "dwt"
+    t.integer "gt"
+    t.integer "loa"
+    t.integer "draft_depan"
+    t.integer "draft_belakang"
+    t.integer "hp_mesin"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "notices", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
     t.string "title"
     t.bigint "user_id", null: false
@@ -99,6 +118,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_05_084742) do
     t.datetime "updated_at", null: false
     t.bigint "user_id", null: false
     t.index ["user_id"], name: "index_pelabuhans_on_user_id"
+  end
+
+  create_table "rooms", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_private", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_general_ci", force: :cascade do |t|

@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @master_kapal %>
+
+<div>
+  <%= link_to "Edit this master kapal", edit_master_kapal_path(@master_kapal) %> |
+  <%= link_to "Back to master kapals", master_kapals_path %>
+
+  <%= button_to "Destroy this master kapal", @master_kapal, method: :delete %>
+</div>

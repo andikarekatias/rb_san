@@ -1,0 +1,12 @@
+<h1>Master kapals</h1>
+
+<div id="master_kapals">
+  <% @master_kapals.each do |master_kapal| %>
+    <%= render master_kapal %>
+    <p>
+      <%= link_to "Show this master kapal", master_kapal %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New master kapal", new_master_kapal_path %>
