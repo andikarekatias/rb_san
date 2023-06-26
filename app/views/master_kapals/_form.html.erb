@@ -1,15 +1,16 @@
 <%= form_with(model: master_kapal) do |form| %>
   <% if master_kapal.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(master_kapal.errors.count, "error") %> prohibited this master_kapal from being saved:</h2>
+      <div class="w3-panel w3-red w3-display-container">
+      <span onclick="this.parentElement.style.display='none'" class="w3-button w3-large w3-display-topright">&times;</span>
+        <h2><%= pluralize(master_kapal.errors.count, "error") %> prohibited this master_kapal from being saved:</h2>
 
-      <ul>
-        <% master_kapal.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+        <ul class="w3-ul w3-border-top w3-border-bottom w3-section">
+          <% master_kapal.errors.each do |error| %>
+            <li><i class="fa fa-circle-o" aria-hidden="true"></i> <%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
 
   <div>
     <%= form.label :nama_kapal, style: "display: block" %>
