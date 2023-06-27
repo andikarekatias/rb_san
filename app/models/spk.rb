@@ -5,4 +5,10 @@ class Spk < ApplicationRecord
     has_one_attached :surat_penunjukan
     has_one_attached :manifest_dock_origin
     has_one_attached :spb_dock_origin
+    before_create :generate_no_spk
+    
+    def generate_no_spk
+        timestamp = Time.now.strftime("%Y%m%d")
+        self.no_spk = "SPK-#{timestamp}#{Spk.maximum(:id).to_i + 1}"
+    end
 end

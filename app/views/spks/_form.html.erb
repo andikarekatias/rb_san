@@ -83,6 +83,11 @@
     <%= form.label :spb_dock_origin %> <br>
     <%= form.file_field :spb_dock_origin %>
   </div>
+  <div class="field">
+  <%= form.label :no_spk %>
+  <%= form.text_field :no_spk, value: @spk.no_spk, readonly: true %>
+</div>
+
   <div>
     <%= form.submit %>
   </div>

@@ -3,7 +3,7 @@ class SpksController < ApplicationController
 
   # GET /spks or /spks.json
   def index
-    @spks = Spk.all
+    @spks = Spk.includes(:surat_penunjukan_attachment, :manifest_dock_origin_attachment, :spb_dock_origin_attachment).all    
     add_breadcrumb('SPK', nil, true)
   end
 
@@ -15,6 +15,7 @@ class SpksController < ApplicationController
   # GET /spks/new
   def new
     @spk = Spk.new
+    @spk.generate_no_spk    
   end
 
   # GET /spks/1/edit
@@ -67,6 +68,6 @@ class SpksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def spk_params
-      params.require(:spk).permit(:kapal, :voyage, :kegiatan, :est_tiba, :est_berangkat, :pelabuhan, :surat_penunjukan, :manifest_dock_origin, :spb_dock_origin)
+      params.require(:spk).permit(:kapal, :voyage, :kegiatan, :est_tiba, :est_berangkat, :pelabuhan, :surat_penunjukan, :manifest_dock_origin, :spb_dock_origin, :no_spk)
     end
 end
