@@ -1,0 +1,60 @@
+    <tr id="<%= dom_id master_kapal %>" is="turbo-frame">
+        <td><%= master_kapal.nama_kapal %></td>
+        <td><%= master_kapal.bendera %></td>
+        <td><%= master_kapal.pemilik %></td>
+        <td><%= master_kapal.alamat_owner %></td>
+        <td><%= master_kapal.jenis_pelayaran %></td>
+        <td><%= master_kapal.jenis_kapal %></td>
+        <td><%= master_kapal.imo_number %></td>
+        <td><%= master_kapal.call_sign %></td>
+        <td><%= master_kapal.dwt %></td>
+        <td><%= master_kapal.gt %></td>
+        <td><%= master_kapal.loa %></td>
+        <td><%= master_kapal.draft_depan %></td>
+        <td><%= master_kapal.draft_belakang %></td>
+        <td><%= master_kapal.hp_mesin %></td>
+        <td>
+        <% if master_kapal.surat_ukur.attached? %>              
+            <%= link_to 'DL', rails_blob_path(master_kapal.surat_ukur, disposition: 'attachment') %>
+        <% else %>
+            No Surat Ukur Uploaded
+        <% end %>
+        </td>
+        <td>
+        <% if master_kapal.surat_laut.attached? %>                  
+            <%= link_to 'DL', rails_blob_path(master_kapal.surat_laut, disposition: 'attachment') %>
+        <% else %>
+            No Surat Laut Uploaded
+        <% end %>
+        </td>
+        <td>
+        <% if master_kapal.foto_kapal.attached? %>
+            <%= link_to image_tag(master_kapal.foto_kapal.variant(resize_to_limit: [100, 100])), rails_blob_path(master_kapal.foto_kapal, disposition: 'inline') %>
+        <% else %>
+            No Foto Kapal Uploaded
+        <% end %>
+        </td>
+        <td>
+            <div class="w3-row ar-tb-action">
+                <div class="w3-third">
+                    <button class="w3-button">
+                    <%= link_to master_kapal_path(master_kapal) do %>
+                        <i class="fa fa-eye w3-text-green" aria-hidden="true"></i>
+                    <% end %>
+                    </button>
+                </div>
+                <div class="w3-third">
+                    <button class="w3-button">
+                    <%= link_to edit_master_kapal_path(master_kapal) do %>
+                        <i class="fa fa-pencil-square-o w3-text-blue" aria-hidden="true"></i>
+                    <% end %>
+                    </button>
+                </div>
+                <div class="w3-third">
+                    <%= button_to master_kapal_path(master_kapal), method: :delete, class: "destroy-button w3-button" do %>
+                        <i class="fa fa-trash-o w3-text-red" aria-hidden="true"></i>
+                    <% end %>
+                </div>
+            </div>
+        </td>
+    </tr>

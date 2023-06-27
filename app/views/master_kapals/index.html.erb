@@ -1,12 +1,35 @@
 <h1>Master kapals</h1>
 
 <div id="master_kapals">
+<div class="w3-responsive">
+<table class="w3-table-all w3-section">
+  <thead>
+      <tr>
+          <th>Nama Kapal</th>
+          <th>Bendera</th>
+          <th>Pemilik</th>
+          <th>Alamat Owner</th>
+          <th>Jenis Pelayaran</th>
+          <th>Jenis Kapal</th>
+          <th>IMO Number</th>
+          <th>Call Sign</th>
+          <th>DWT</th>
+          <th>GT</th>
+          <th>LOA</th>
+          <th>Draft Depan</th>
+          <th>Draft Belakang</th>
+          <th>HP Mesin</th> 
+          <th>Surat Ukur</th>
+          <th>Surat Laut</th>
+          <th>Foto Kapal</th>         
+          <th>Action</th>
+      </tr>    
+  </thead>
+  <tbody id="master_kapals" is="turbo-frame">
   <% @master_kapals.each do |master_kapal| %>
-    <%= render master_kapal %>
-    <p>
-      <%= link_to "Show this master kapal", master_kapal %>
-    </p>
+    <%= render partial: 'master_kapal_table', locals: {master_kapal: master_kapal} %>              
   <% end %>
+  </tbody>
+</table>
 </div>
-
-<%= link_to "New master kapal", new_master_kapal_path %>
+<%= paginate @master_kapals, window: 2 %>

@@ -19,3 +19,13 @@ a {
     background-size: cover;
   }
 
+/* Global */
+.ar-tb-action{
+    min-width: 100px;
+}
+/* Mobile */
+@media (max-width: 600px){
+    .ar-tb-action{
+        min-width: 100%;
+    }
+}

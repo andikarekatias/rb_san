@@ -3,7 +3,8 @@ class MasterKapalsController < ApplicationController
 
   # GET /master_kapals or /master_kapals.json
   def index
-    @master_kapals = MasterKapal.includes(:surat_ukur_attachment, :surat_laut_attachment, :foto_kapal_attachment).all
+    @master_kapals = MasterKapal.includes(:surat_ukur_attachment, :surat_laut_attachment, :foto_kapal_attachment).all.order(created_at: :desc).page(params[:page]).per(5)
+    add_breadcrumb('Master Kapal', nil, true)
   end
 
   # GET /master_kapals/1 or /master_kapals/1.json

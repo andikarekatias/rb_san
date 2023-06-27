@@ -3,7 +3,7 @@ class SpksController < ApplicationController
 
   # GET /spks or /spks.json
   def index
-    @spks = Spk.includes(:surat_penunjukan_attachment, :manifest_dock_origin_attachment, :spb_dock_origin_attachment).all    
+    @spks = Spk.includes(surat_penunjukan_attachment: [:blob], manifest_dock_origin_attachment: [:blob], spb_dock_origin_attachment: [:blob]).all    
     add_breadcrumb('SPK', nil, true)
   end
 
