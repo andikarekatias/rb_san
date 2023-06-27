@@ -16,12 +16,16 @@
 
   <p>
     <strong>Est tiba:</strong>
-    <%= spk.est_tiba %>
+    <% day_name = @indonesian_days[spk.est_tiba.strftime("%A")] || spk.est_tiba.strftime("%A") %>
+    <% month_name = @indonesian_months[spk.est_tiba.strftime("%B")] || spk.est_tiba.strftime("%B") %>
+    <%= day_name %>, <%= spk.est_tiba.strftime("%e #{month_name} %Y, %R %Z") %>
   </p>
 
   <p>
     <strong>Est berangkat:</strong>
-    <%= spk.est_berangkat %>
+    <% day_name = @indonesian_days[spk.est_berangkat.strftime("%A")] || spk.est_berangkat.strftime("%A") %>
+    <% month_name = @indonesian_months[spk.est_berangkat.strftime("%B")] || spk.est_berangkat.strftime("%B") %>
+    <%= day_name %>, <%= spk.est_berangkat.strftime("%e #{month_name} %Y, %R %Z") %>
   </p>
 
   <p>

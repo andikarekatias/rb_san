@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
     layout :set_layout
     before_action :set_query
     before_action :set_page_title
+    before_action :set_indonesian_days_and_months
 
     def set_query
         @query = Pelabuhan.ransack(params[:q])
@@ -63,5 +64,32 @@ class ApplicationController < ActionController::Base
         flash[:alert] = "You are not authorized to perform this action."
         redirect_back(fallback_location: root_path)
     end
+
+    def set_indonesian_days_and_months
+        @indonesian_days = {
+          'Sunday' => 'Minggu',
+          'Monday' => 'Senin',
+          'Tuesday' => 'Selasa',
+          'Wednesday' => 'Rabu',
+          'Thursday' => 'Kamis',
+          'Friday' => 'Jumat',
+          'Saturday' => 'Sabtu'
+        }
+    
+        @indonesian_months = {
+          'January' => 'Januari',
+          'February' => 'Februari',
+          'March' => 'Maret',
+          'April' => 'April',
+          'May' => 'Mei',
+          'June' => 'Juni',
+          'July' => 'Juli',
+          'August' => 'Agustus',
+          'September' => 'September',
+          'October' => 'Oktober',
+          'November' => 'November',
+          'December' => 'Desember'
+        }
+      end
 
 end
