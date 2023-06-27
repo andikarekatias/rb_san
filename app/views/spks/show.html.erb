@@ -1,0 +1,8 @@
+<%= render @spk %>
+
+<div>
+  <%= link_to "Edit this spk", edit_spk_path(@spk) %> |
+  <%= link_to "Back to spks", spks_path %>
+
+  <%= button_to "Destroy this spk", @spk, method: :delete %>
+</div>

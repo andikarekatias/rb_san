@@ -1,5 +1,6 @@
 class Pelabuhan < ApplicationRecord
     belongs_to :user
+    has_many :spk, foreign_key: 'pelabuhan'
     validates :daerah, presence: true
     validates :nama_pelabuhan, presence: true
     def self.ransackable_attributes(auth_object = nil)

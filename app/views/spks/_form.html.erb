@@ -1,0 +1,89 @@
+<%= form_with(model: spk) do |form| %>
+  <% if spk.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(spk.errors.count, "error") %> prohibited this spk from being saved:</h2>
+
+      <ul>
+        <% spk.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+  <%= form.label :kapal, style: "display: block" %>
+  <%= form.select :kapal, options_from_collection_for_select(MasterKapal.all, :id, :nama_kapal) %>
+</div>
+
+
+  <div>
+    <%= form.label :voyage, style: "display: block" %>
+    <%= form.text_field :voyage %>
+  </div>
+
+  <div>
+    <%= form.label :kegiatan, style: "display: block" %>
+    <%= form.select :kegiatan, options_for_select(Spk.kegiatans.map {|key, value| [key.titleize.upcase, Spk.kegiatans.key(value)]}, @spk.kegiatan) %>
+  </div>
+
+  <div>
+    <%= form.label :est_tiba, style: "display: block" %>
+    <%= form.datetime_field :est_tiba %>
+  </div>
+
+  <div>
+    <%= form.label :est_berangkat, style: "display: block" %>
+    <%= form.datetime_field :est_berangkat %>
+  </div>
+
+  <div>
+    <%= form.label :pelabuhan, style: "display: block" %>
+    <%= form.select :pelabuhan, Pelabuhan.all.map { |p| [p.nama_pelabuhan, p.id] }, {}, class: "form-control" %>
+  </div>
+  <div>
+    <strong>Surat Penunjukan:</strong>
+    <% if spk.surat_penunjukan.attached? %>      
+      <button onclick="sanTampil('<%= spk.surat_penunjukan %>')" class="w3-button w3-blue">Tampil</button>
+      <embed src="<%= url_for(spk.surat_penunjukan) %>" type="application/pdf" width="500" height="600" id="<%= spk.surat_penunjukan %>" class="w3-hide">
+      <%= link_to 'Download', rails_blob_path(spk.surat_penunjukan, disposition: 'attachment') %>
+    <% else %>
+      No Surat Penunjukan Uploaded
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :surat_penunjukan %> <br>
+    <%= form.file_field :surat_penunjukan %>
+  </div>
+  <div>
+    <strong>Manifest Pelabuhan Asal:</strong>
+    <% if spk.manifest_dock_origin.attached? %>      
+      <button onclick="sanTampil('<%= spk.manifest_dock_origin %>')" class="w3-button w3-blue">Tampil</button>
+      <embed src="<%= url_for(spk.manifest_dock_origin) %>" type="application/pdf" width="500" height="600" id="<%= spk.manifest_dock_origin %>" class="w3-hide">
+      <%= link_to 'Download', rails_blob_path(spk.manifest_dock_origin, disposition: 'attachment') %>
+    <% else %>
+      No Manifest Pelabuhan Asal Uploaded
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :manifest_dock_origin %> <br>
+    <%= form.file_field :manifest_dock_origin %>
+  </div>
+  <div>
+    <strong>SPB Pelabuhan Asal:</strong>
+    <% if spk.spb_dock_origin.attached? %>      
+      <button onclick="sanTampil('<%= spk.spb_dock_origin %>')" class="w3-button w3-blue">Tampil</button>
+      <embed src="<%= url_for(spk.spb_dock_origin) %>" type="application/pdf" width="500" height="600" id="<%= spk.spb_dock_origin %>" class="w3-hide">
+      <%= link_to 'Download', rails_blob_path(spk.spb_dock_origin, disposition: 'attachment') %>
+    <% else %>
+      No SPB Pelabuhan Asal Uploaded
+    <% end %>
+  </div>
+  <div>
+    <%= form.label :spb_dock_origin %> <br>
+    <%= form.file_field :spb_dock_origin %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

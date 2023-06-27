@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :spks
   resources :master_kapals
   root 'dashboard#index'
   authenticated :user, ->(user) { user.admin? } do    

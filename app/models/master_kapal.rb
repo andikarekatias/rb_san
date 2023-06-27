@@ -1,18 +1,10 @@
 class MasterKapal < ApplicationRecord
-    enum jenis_kapal: {
-        MV: :MV,
-        MT: :MT,
-        TB: :TB,
-        TK: :TK,
-        PENUMPANG: :PENUMPANG,
-        KERUK: :KERUK,
-        KHUSUS: :KHUSUS
-      }
+    enum jenis_kapal: [ :MV, :MT, :TB, :TK, :PENUMPANG, :KERUK, :KHUSUS ]
     has_one_attached :surat_ukur
     has_one_attached :surat_laut
     has_one_attached :foto_kapal
     validate :image_file_format
-
+    has_many :spk, foreign_key: 'kapal'
     private
 
     def image_file_format

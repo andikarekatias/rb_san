@@ -1,0 +1,12 @@
+<h1>Spks</h1>
+
+<div id="spks">
+  <% @spks.each do |spk| %>
+    <%= render spk %>
+    <p>
+      <%= link_to "Show this spk", spk %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New spk", new_spk_path %>
