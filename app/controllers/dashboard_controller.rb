@@ -4,7 +4,11 @@ class DashboardController < ApplicationController
   def index    
     @notices = Notice.all.order(created_at: :desc).limit(5)    
   end
-
+  def routes
+    @routes = Rails.application.routes.routes.sort_by do |route|
+      route.defaults[:controller] || ''
+    end
+  end
   protected
 
   def unauthenticated!

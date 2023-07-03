@@ -5,7 +5,7 @@ var mySidebar = document.getElementById("mySidebar");
 var overlayBg = document.getElementById("myOverlay");
 
 // Toggle between showing and hiding the sidebar, and add overlay effect
-window.w3_open = function () {
+function w3_open() {
   if (mySidebar.style.display === 'block') {
     mySidebar.style.display = 'none';
     overlayBg.style.display = "none";
@@ -16,12 +16,12 @@ window.w3_open = function () {
 }
 
 // Close the sidebar with the close button
-window.w3_close = function () {
+function w3_close() {
   mySidebar.style.display = "none";
   overlayBg.style.display = "none";
 }
 
-window.sanTampil = function (elementId) {
+function sanTampil(elementId) {
   var x = document.getElementById(elementId);
   
   if (x.className.indexOf("w3-show") == -1) {

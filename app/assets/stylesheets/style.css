@@ -23,6 +23,9 @@ a {
 .ar-tb-action{
     min-width: 100px;
 }
+.ar-m-bottom{
+    margin-bottom: 68px!important;
+}
 /* Mobile */
 @media (max-width: 600px){
     .ar-tb-action{

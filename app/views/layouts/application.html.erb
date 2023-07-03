@@ -18,11 +18,12 @@
     <script src="https://kit.fontawesome.com/543620e0a3.js" crossorigin="anonymous"></script>    
     <%= javascript_importmap_tags %>    
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>    
   </head>
 
   <body class="w3-light-grey">    
     <%= render 'layouts/sidebar' %>                   
-    <main class="w3-main" style="margin-left:250px;margin-top:43px;">    
+    <main class="w3-main ar-m-bottom" style="margin-left:250px;margin-top:43px;">    
     <%= render 'layouts/msg' %>
     <%= render 'layouts/header' %>
     <div class="w3-container">

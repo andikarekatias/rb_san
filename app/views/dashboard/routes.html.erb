@@ -1,0 +1,20 @@
+<h1>All Available Routes</h1>
+<div class="w3-responsive">
+<table class="w3-table-all w3-section w3-card">
+  <thead>
+    <tr>
+      <th>HTTP Method</th>
+      <th>Path</th>
+      <th>Controller#Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @routes.each do |route| %>
+      <tr>
+        <td><%= route.verb %></td>
+        <td><%= route.path.spec.to_s %></td>
+        <td><%= route.defaults[:controller] %>#<%= route.defaults[:action] %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

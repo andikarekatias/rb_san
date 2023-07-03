@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   resources :spks
   resources :master_kapals
-  root 'dashboard#index'
+  root 'dashboard#index'  
   authenticated :user, ->(user) { user.admin? } do    
     get 'dashboard/pelabuhans'
     get 'dashboard/notices'
     get 'dashboard/comments'
     get 'dashboard/users'
     get 'dashboard/show_notice'
+    get 'dashboard/routes'
   end
   get 'search', to: "search#index"
   resources :pelabuhans  

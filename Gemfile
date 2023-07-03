@@ -86,3 +86,5 @@ gem "bullet", "~> 7.0"
 gem "pundit", "~> 2.3"
 
 gem "kaminari", "~> 1.2"
+
+gem "jsbundling-rails", "~> 1.1"
