@@ -1,32 +1,29 @@
-// Get the Sidebar
-var mySidebar = document.getElementById("mySidebar");
-
-// Get the DIV with overlay effect
-var overlayBg = document.getElementById("myOverlay");
-
-// Toggle between showing and hiding the sidebar, and add overlay effect
-function w3_open() {
-  if (mySidebar.style.display === 'block') {
-    mySidebar.style.display = 'none';
-    overlayBg.style.display = "none";
-  } else {
-    mySidebar.style.display = 'block';
-    overlayBg.style.display = "block";
-  }
-}
-
-// Close the sidebar with the close button
-function w3_close() {
-  mySidebar.style.display = "none";
-  overlayBg.style.display = "none";
-}
-
-function sanTampil(elementId) {
-  var x = document.getElementById(elementId);
-  
-  if (x.className.indexOf("w3-show") == -1) {
-    x.className += " w3-show";
-  } else { 
-    x.className = x.className.replace(" w3-show", "");
-  }
-}
+document.addEventListener("turbo:load", function() {
+  $(function () {
+    console.log("test jQ");
+    var mySidebar = $("#mySidebar");
+    var overlayBg = $("#myOverlay");
+    window.w3_open = function() {
+      if (mySidebar.css("display") === 'block') {
+        mySidebar.css("display", 'none');
+        overlayBg.css("display", "none");
+      } else {
+        mySidebar.css("display", 'block');
+        overlayBg.css("display", "block");
+      }
+    }
+    window.w3_close = function() {
+      mySidebar.css("display", "none");
+      overlayBg.css("display", "none");
+    }
+    window.sanTampil =  function(elementId) {
+      var x = $("#" + elementId);
+      
+      if (!x.hasClass("w3-show")) {
+        x.addClass("w3-show");
+      } else { 
+        x.removeClass("w3-show");
+      }
+    }
+  })
+})

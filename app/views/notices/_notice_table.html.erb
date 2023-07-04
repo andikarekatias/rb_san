@@ -19,7 +19,7 @@
                     </button>
                 </div>
                 <div class="w3-third">
-                    <%= button_to notice_path(notice), method: :delete, class: "destroy-button w3-button" do %>
+                    <%= button_to notice_path(notice), method: :delete, class: "destroy-button w3-button", form: { data: { turbo_confirm: "Are you sure?" } } do %>
                         <i class="fa fa-trash-o w3-text-red" aria-hidden="true"></i>
                     <% end %>
                 </div>

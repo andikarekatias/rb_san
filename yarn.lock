@@ -218,6 +218,7 @@ __metadata:
     "@hotwired/turbo-rails": ^7.3.0
     "@rails/actiontext": ^7.0.6
     esbuild: ^0.18.11
+    jquery: ^3.7.0
     trix: ^2.0.5
   languageName: unknown
   linkType: soft
@@ -296,6 +297,13 @@ __metadata:
   bin:
     esbuild: bin/esbuild
   checksum: fbd981388fe391c4f0a1b71120ca86ee75cc6de88c01bd6883f26d8450cb3beeaae602459f9a8b9dc9e026ad68b67cda2cad5f5327c9960a53fa0cb358c61d97
+  languageName: node
+  linkType: hard
+
+"jquery@npm:^3.7.0":
+  version: 3.7.0
+  resolution: "jquery@npm:3.7.0"
+  checksum: 907785e133afc427650a131af5fccef66a404885037513b3d4d7d63aee6409bcc32a39836868c60e59b05aa0fb8ace8961c18b2ee3ffdf6ffdb571d6d7cd88ff
   languageName: node
   linkType: hard
 
