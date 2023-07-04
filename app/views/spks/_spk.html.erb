@@ -35,8 +35,8 @@
   <div>
     <strong>Surat Penunjukan:</strong>
     <% if spk.surat_penunjukan.attached? %>      
-      <button onclick="sanTampil('<%= spk.surat_penunjukan %>')" class="w3-button w3-blue">Tampil</button>
-      <embed src="<%= url_for(spk.surat_penunjukan) %>" type="application/pdf" width="500" height="600" id="<%= spk.surat_penunjukan %>" class="w3-hide">
+      <button onclick="sanTampil('sp-<%= dom_id spk %>')" class="w3-button w3-blue">Tampil</button>
+      <embed src="<%= url_for(spk.surat_penunjukan) %>" type="application/pdf" width="500" height="600" id="sp-<%= dom_id spk %>" class="w3-hide">
       <%= link_to 'Download', rails_blob_path(spk.surat_penunjukan, disposition: 'attachment') %>
     <% else %>
       No Surat Penunjukan Uploaded
@@ -45,8 +45,8 @@
   <div>
     <strong>Manifest Pelabuhan Asal:</strong>
     <% if spk.manifest_dock_origin.attached? %>      
-      <button onclick="sanTampil('<%= spk.manifest_dock_origin %>')" class="w3-button w3-blue">Tampil</button>
-      <embed src="<%= url_for(spk.manifest_dock_origin) %>" type="application/pdf" width="500" height="600" id="<%= spk.manifest_dock_origin %>" class="w3-hide">
+      <button onclick="sanTampil('pa-<%= dom_id spk %>')" class="w3-button w3-blue">Tampil</button>
+      <embed src="<%= url_for(spk.manifest_dock_origin) %>" type="application/pdf" width="500" height="600" id="pa-<%= dom_id spk %>" class="w3-hide">
       <%= link_to 'Download', rails_blob_path(spk.manifest_dock_origin, disposition: 'attachment') %>
     <% else %>
       No Manifest Pelabuhan Asal Uploaded
@@ -55,8 +55,8 @@
   <div>
     <strong>SPB Pelabuhan Asal:</strong>
     <% if spk.spb_dock_origin.attached? %>      
-      <button onclick="sanTampil('<%= spk.spb_dock_origin %>')" class="w3-button w3-blue">Tampil</button>
-      <embed src="<%= url_for(spk.spb_dock_origin) %>" type="application/pdf" width="500" height="600" id="<%= spk.spb_dock_origin %>" class="w3-hide">
+      <button onclick="sanTampil('mpa-<%= dom_id spk %>')" class="w3-button w3-blue">Tampil</button>
+      <embed src="<%= url_for(spk.spb_dock_origin) %>" type="application/pdf" width="500" height="600" id="mpa-<%= dom_id spk %>" class="w3-hide">
       <%= link_to 'Download', rails_blob_path(spk.spb_dock_origin, disposition: 'attachment') %>
     <% else %>
       No SPB Pelabuhan Asal Uploaded

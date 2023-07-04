@@ -24,7 +24,12 @@ a {
     min-width: 100px;
 }
 .ar-m-bottom{
-    margin-bottom: 68px!important;
+    margin-bottom: 0!important;
+}
+.ar-footer{    
+    right: 0;
+    bottom: 0;
+    left: 0;            
 }
 /* Mobile */
 @media (max-width: 600px){

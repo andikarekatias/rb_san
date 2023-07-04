@@ -1,6 +1,5 @@
 document.addEventListener("turbo:load", function() {
   $(function () {
-    console.log("test jQ");
     var mySidebar = $("#mySidebar");
     var overlayBg = $("#myOverlay");
     window.w3_open = function() {
