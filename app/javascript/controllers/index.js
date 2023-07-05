@@ -9,4 +9,9 @@
 // Lazy load controllers as they appear in the DOM (remember not to preload controllers in import map!)
 // import { lazyLoadControllersFrom } from "@hotwired/stimulus-loading"
 // lazyLoadControllersFrom("controllers", application)
-import { application } from "./application";
+import { application } from "./application"
+
+import controllers from "./**/*_controller.js"
+controllers.forEach((controller) => {
+  application.register(controller.name, controller.module.default)
+})

@@ -118,10 +118,7 @@
       No Foto Kapal Uploaded
     <% end %>
   </div>
-  <div>
-    <%= form.label :foto_kapal %> <br>
-    <%= form.file_field :foto_kapal %>
-  </div>
+  <%= render 'file_preview', form: form, master_kapal: master_kapal %>
   <div>
     <%= form.submit %>
   </div>
