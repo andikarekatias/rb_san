@@ -1,0 +1,23 @@
+<h1 class="w3-center"><%= pluralize(@master_kapals.count, "Result") %></h1>
+
+<%= render 'search/form' %>
+
+<div class="w3-section">
+    <table class="w3-table-all w3-hoverable">
+        <thead>
+            <tr>
+                <th> <%= sort_link(@query, :nama_kapal, "Nama Kapal", default_order: :asc) %> </th>
+                <th> <%= sort_link(@query, :bendera, "Bendera") %> </th>
+            </tr>
+        </thead>
+        <tbody>
+            <% @master_kapals.each do |mk| %>
+            <tr>
+                <td><%= link_to mk.nama_kapal, mk %></td>
+                <td><%= link_to mk.bendera, mk %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>
+<%= paginate @master_kapals, window: 2 %>

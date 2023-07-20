@@ -1,7 +1,13 @@
 <%= search_form_for(@query, url: search_path, method: :get,) do |f| %>
 <div class="w3-row">
   <div class="w3-col s10">
+  <% if current_page?(controller:'search') && current_page?(action:'index') %>
     <%= f.search_field :daerah_or_nama_pelabuhan_i_cont_any, placeholder: "Search...", class: "w3-input w3-mobile" %>
+  <% elsif current_page?(action:'master_kapal') %>
+    <%= f.search_field :nama_kapal_or_bendera_i_cont_any, placeholder: "Search...", class: "w3-input w3-mobile" %>
+  <% else %>
+    <%= f.search_field :daerah_or_nama_pelabuhan_i_cont_any, placeholder: "Search...", class: "w3-input w3-mobile" %>
+  <% end %>    
   </div>
   <div class="w3-col s2">
     <%= button_tag(class: "w3-button w3-block w3-blue w3-mobile") do %>

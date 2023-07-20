@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     get 'dashboard/routes'
   end
   get 'search', to: "search#index"
+  get 'search/pelabuhan', to: "search#pelabuhan"
+  get 'search/master_kapal', to: "search#master_kapal"
   resources :pelabuhans  
   devise_for :users, skip: [:sessions], controllers: {
     session: 'users/sessions',

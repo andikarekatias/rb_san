@@ -88,3 +88,7 @@ gem "pundit", "~> 2.3"
 gem "kaminari", "~> 1.2"
 
 gem "jsbundling-rails", "~> 1.1"
+
+gem "searchkick", "~> 5.3"
+
+gem "elasticsearch", "~> 8.8"
